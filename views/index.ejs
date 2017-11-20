@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
+    <title>myAnimeProfilePic</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   </head>
   <body>
     <h1>myAnimeProfilePic</h1>
@@ -13,7 +14,19 @@
       <li> Be patient, image processing on my EC2 isn't blazing fast</li>
       <li> Go to the link below</li>
     </ol>
-    <input id="username" type="text" placeholder="your myanimelist username" />
+    <input id="username" type="text" placeholder="myanimelist username" />
     <button id="submitButton">Submit</button>
+    <br />
+    <a id="result"></a>
+    <script>
+      $(document).ready(function(){
+        $("#submitButton").click(function() {
+          $.get("user/"+($("#username").val()=="" ? "stoptryingtohackme" : $("#username").val()),function(data) {
+            $("#result").text(data["url"]);
+            $("#result").prop("href",data["url"]);
+          });
+        });
+      });
+    </script>
   </body>
 </html>

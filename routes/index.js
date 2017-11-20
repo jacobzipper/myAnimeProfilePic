@@ -7,7 +7,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/user/:name', function(req,res,next) {
-  res.json({'url':'https://s3.amazonaws.com/myanimeprofilepic/'+req.params.name+'.png'});
+  res.json({'url':'https://myanimeprofilepic.s3.amazonaws.com/'+req.params.name+'.png'});
 });
 
 module.exports = router;

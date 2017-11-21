@@ -14,19 +14,10 @@
       <li> Be patient, image processing on my EC2 isn't blazing fast</li>
       <li> Go to the link below</li>
     </ol>
-    <input id="username" type="text" placeholder="myanimelist username" />
-    <button id="submitButton">Submit</button>
-    <br />
-    <a id="result"></a>
-    <script>
-      $(document).ready(function(){
-        $("#submitButton").click(function() {
-          $.get("user/"+($("#username").val()=="" ? "stoptryingtohackme" : $("#username").val()),function(data) {
-            $("#result").text(data["url"]);
-            $("#result").prop("href",data["url"]);
-          });
-        });
-      });
-    </script>
+    <form action="/user" method="post" enctype="multipart/form-data">
+    <input name="name" id="username" type="text" placeholder="myanimelist username" required />
+    <input id="face" name="face" type="file" placeholder="Upload a file" required />
+    <button id="submitButton" type="submit">Submit</button>
+    </form>
   </body>
 </html>

@@ -1,5 +1,4 @@
 import requests
-import cv2
 from boto.s3.connection import S3Connection
 import json
 import sys
@@ -11,14 +10,14 @@ import math
 import imp
 import random
 
-utils = imp.load_source("utils","/usr/lib/python2.7/site-packages/google/modules/utils.py")
-calculator = imp.load_source("calculator","/usr/lib/python2.7/site-packages/google/modules/calculator.py")
-currency = imp.load_source("currency","/usr/lib/python2.7/site-packages/google/modules/currency.py")
-shopping_search = imp.load_source("shopping_search","/usr/lib/python2.7/site-packages/google/modules/shopping_search.py")
-standard_search = imp.load_source("standard_search","/usr/lib/python2.7/site-packages/google/modules/standard_search.py")
-images = imp.load_source("images","/usr/lib/python2.7/site-packages/google/modules/images.py")
-modules = imp.load_source("modules","/usr/lib/python2.7/site-packages/google/modules/__init__.py")
-google = imp.load_source("google","/usr/lib/python2.7/site-packages/google/google.py")
+utils = imp.load_source("utils","/usr/local/lib/python2.7/dist-packages/google/modules/utils.py")
+calculator = imp.load_source("calculator","/usr/local/lib/python2.7/dist-packages/google/modules/calculator.py")
+currency = imp.load_source("currency","/usr/local/lib/python2.7/dist-packages/google/modules/currency.py")
+shopping_search = imp.load_source("shopping_search","/usr/local/lib/python2.7/dist-packages/google/modules/shopping_search.py")
+standard_search = imp.load_source("standard_search","/usr/local/lib/python2.7/dist-packages/google/modules/standard_search.py")
+images = imp.load_source("images","/usr/local/lib/python2.7/dist-packages/google/modules/images.py")
+modules = imp.load_source("modules","/usr/local/lib/python2.7/dist-packages/google/modules/__init__.py")
+google = imp.load_source("google","/usr/local/lib/python2.7/dist-packages/google/google.py")
 
 if len(sys.argv) < 2:
   sys.exit(0)
@@ -49,3 +48,4 @@ mal.key = user+".png"
 mal.set_contents_from_filename(mal.key)
 os.system("rm -rf faces/"+hashlib.md5((user+"face").encode()).hexdigest()+".png "+md5user+" "+user+".png")
 print "done"
+os.system("rm out.log")
